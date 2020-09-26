@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="./styles.css">
+    </head>
+    <body>
+        <div class="grid-container" id="container">
+            
+        </div>
+    </body>
+    <script>
+        
+        var amount = 256;
+        var area = Math.sqrt(amount);
+        var colWidth = area / 100;
+        console.log(area);
+        let root = document.documentElement;
+
+        function newGrid(amount) {
+             for (let i=0;i<amount;i++) {
+            const box = document.createElement("div");
+            box.setAttribute("class", "box");
+            document.getElementById("container").appendChild(box);
+             }
+        } 
+        function fixSize(area) {
+        root.style.setProperty('--area', area + "fr");
+        }
+        newGrid(amount); 
+        fixSize(area);
+    </script>
+</html>
