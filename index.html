@@ -4,23 +4,44 @@
         <link rel="stylesheet" href="./styles.css">
     </head>
     <body>
+        <button onclick="makeGrid()">Click here to clear or resize grid</button>
         <div class="flex-container" id="container">
             
         </div>
     </body>
     <script>
-        
         var amount = 256;
         var area = Math.sqrt(amount);
         var colWidth = 100 / area;
         let root = document.documentElement;
+        
+        
+
+        function makeGrid() {
+
+            location.reload();
+            var number = prompt("Enter the amount of boxes per row/column : ", "16");
+            if (number != null && number <= 64 && number >= 4) {
+                amount = number * number;
+                area = Math.sqrt(amount);
+                colWidth = 100 / area;
+                newGrid(amount);
+                fixSize(area);
+                let boxes = document.getElementsByClassName("box").length;
+                for (let i=0;i<boxes;i++) {
+                    document.getElementsByClassName("box")[i].style.background = "white";
+                }
+            }
+        }
+
+        
 
         function newGrid(amount) {
              for (let i=0;i<amount;i++) {
-            const box = document.createElement("div");
-            box.setAttribute("class", "box");
-            box.setAttribute("onmouseenter", "fill(this)");
-            document.getElementById("container").appendChild(box);
+                const box = document.createElement("div");
+                box.setAttribute("class", "box");
+                box.setAttribute("onmouseenter", "fill(this)");
+                document.getElementById("container").appendChild(box);
              }
         } 
         function fixSize(area) {
@@ -30,7 +51,6 @@
         function fill(box) {
             box.style.background = 'black';
         }
-
 
         
 
