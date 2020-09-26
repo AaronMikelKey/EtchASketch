@@ -4,7 +4,7 @@
         <link rel="stylesheet" href="./styles.css">
     </head>
     <body>
-        <div class="grid-container" id="container">
+        <div class="flex-container" id="container">
             
         </div>
     </body>
@@ -12,20 +12,28 @@
         
         var amount = 256;
         var area = Math.sqrt(amount);
-        var colWidth = area / 100;
-        console.log(area);
+        var colWidth = 100 / area;
         let root = document.documentElement;
 
         function newGrid(amount) {
              for (let i=0;i<amount;i++) {
             const box = document.createElement("div");
             box.setAttribute("class", "box");
+            box.setAttribute("onmouseenter", "fill(this)");
             document.getElementById("container").appendChild(box);
              }
         } 
         function fixSize(area) {
-        root.style.setProperty('--area', area + "fr");
+            root.style.setProperty('--area', area + "fr");
+            root.style.setProperty('--colWidth', colWidth + "%");
         }
+        function fill(box) {
+            box.style.background = 'black';
+        }
+
+
+        
+
         newGrid(amount); 
         fixSize(area);
     </script>

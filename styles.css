@@ -4,25 +4,29 @@
 }
 
 html, 
-body, 
-.grid-container {
-    height: 100%;
-    width: 100%;
+body,
+.flex-container {
+    height: 100vh;
+    width: 100vw;
 }
 .box {
     border: 1px solid black;
     background-color: white;
-    height: var(--area);
-    width: var(--area);
+    flex-basis: auto;
+    width: calc(-2px + var(--colWidth));
+    height: calc(-2px + var(--colWidth));
 }
 
-.grid-container {
-    height: 100%;
-    width: 100%;
-    display: grid;
-    grid-gap: 0;
+.flex-container {
+    display: flex;
+    flex-flow: row wrap;
+    text-align: center;
     justify-content: center;
-    align-content: center;
-    grid-auto-columns: var(--area);
-    grid-auto-rows: var(--area);
+    margin: auto;
+    max-width: 400px;
+    max-height: 400px;
+}
+
+.fill {
+    background-color: black;
 }
